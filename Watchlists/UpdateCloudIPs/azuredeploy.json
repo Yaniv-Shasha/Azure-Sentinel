@@ -221,7 +221,7 @@
             "AWS": "[parameters('AWS')]",
             "GCP": "[parameters('GCP')]",
             "Azure": "[parameters('Azure')]",
-            "WEBSITE_RUN_FROM_PACKAGE": "https://aka.ms/updatecloudipsazurefunctionzip"
+            "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/Yaniv-Shasha/Azure-Sentinel/raw/master/Watchlists/UpdateCloudIPs/AzureFunctionUpdateCloudIPs/UpdateCloudIPs.zip"
           }
         }
       ]
