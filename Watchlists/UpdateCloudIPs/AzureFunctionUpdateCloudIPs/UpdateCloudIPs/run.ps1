@@ -23,7 +23,7 @@ function Check-Watchlist {
         
     )
 
-    $Uri = $resourceURI + "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $workspaceName + "/providers/Microsoft.SecurityInsights/watchlists/" + $watchlistAlias + "?api-version=2021-03-01-preview"
+    $Uri = $resourceURI + "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $workspaceName + "/providers/Microsoft.SecurityInsights/watchlists/" + $watchlistAlias + "?api-version=2021-04-01"
     $new = $false
     try {
         $IPWatchlist = Invoke-RestMethod -Method GET -Headers $requestHeaders -Uri $Uri
@@ -74,7 +74,7 @@ function Get-WatchlistItemTable {
         
     )
     $nextLink = $true
-    $Uri = $resourceURI + "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $workspaceName + "/providers/Microsoft.SecurityInsights/watchlists/" + $watchlistAlias + "/watchlistItems?api-version=2021-03-01-preview"
+    $Uri = $resourceURI + "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.OperationalInsights/workspaces/" + $workspaceName + "/providers/Microsoft.SecurityInsights/watchlists/" + $watchlistAlias + "/watchlistItems?api-version=2021-04-01"
     $WatchListItems = Invoke-RestMethod -Method Get -Headers $requestHeaders -Uri $Uri
     $WatchListItemsCollection = $WatchListItems.value
     $a = 0
@@ -129,7 +129,7 @@ function Add-WatchlistItem{
         }
     }
     $body = $body | ConvertTo-Json
-    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-03-01-preview"
+    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-04-01"
     $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
 }
 
@@ -155,7 +155,7 @@ function Remove-WatchlistItem{
         [string]$workspaceName = $workspaceName,
         $requestHeaders = $requestHeaders
     )
-    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-03-01-preview"
+    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-04-01"
     $response = Invoke-RestMethod -Method Delete -Headers $requestHeaders -Uri $Uri
 }
 
@@ -181,7 +181,7 @@ function Update-WatchlistItem{
         }
     }
     $body = $body | ConvertTo-Json
-    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-03-01-preview"
+    $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"/watchlistItems/"+$watchlistitem+"?api-version=2021-04-01"
     $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
 }
 
@@ -238,7 +238,7 @@ if ($env:AWS -eq "Yes") {
             }
         }
         $body = $body | ConvertTo-Json
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Created new AWS IP watchlist with all ranges."
@@ -300,7 +300,7 @@ if ($env:AWS -eq "Yes") {
             }
         }
         $body = $body | ConvertTo-Json
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Updated AWS IP watchlist."
@@ -353,7 +353,7 @@ if ($env:GCP -eq "Yes") {
             }
         }
         $body = $body | ConvertTo-Json
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Created new GCP IP watchlist with all ranges."
@@ -420,7 +420,7 @@ if ($env:GCP -eq "Yes") {
             }
         }
         $body = $body | ConvertTo-Json
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Updated GCP IP watchlist with all ranges."
@@ -478,7 +478,7 @@ if ($env:Azure -eq "Yes") {
         }
         $body = $body | ConvertTo-Json
         #create function
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Created new Azure IP watchlist with all ranges."
@@ -549,7 +549,7 @@ if ($env:Azure -eq "Yes") {
         }
         $body = $body | ConvertTo-Json
         #create function
-        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-03-01-preview"
+        $Uri = $resourceURI+"/subscriptions/"+$subscriptionId+"/resourceGroups/"+$resourceGroupName+"/providers/Microsoft.OperationalInsights/workspaces/"+$workspaceName+"/providers/Microsoft.SecurityInsights/watchlists/"+$watchlistAlias+"?api-version=2021-04-01"
         $response = Invoke-RestMethod -Method Put -Headers $requestHeaders -Uri $Uri -Body $body
         if (($response.id) -ne "" -or ($response.id) -ne $null) {
             Write-Host "Updated Azure IP watchlist with all ranges."
